@@ -25,5 +25,8 @@ def most_calories_being_carried_n_elves(n:)
 end
 
 def day1_result
-  "The most calories being carried by an elf is: #{most_calories_being_carried_n_elves(n: 3)}"
+  [
+    "The most calories being carried by an elf is: #{most_calories_being_carried_n_elves(n: 1)}",
+    "The most calories being carried by the top 3 elves is: #{most_calories_being_carried_n_elves(n: 3)}"
+  ].join("\n")
 end
