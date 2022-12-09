@@ -1,5 +1,6 @@
-class Day1
+# frozen_string_literal: true
 
+class Day1
   def result
     [
       "The most calories being carried by an elf is: #{most_calories_being_carried_n_elves(n: 1)}",
@@ -8,7 +9,7 @@ class Day1
   end
 
   private
-  
+
   def new_elf?(line:)
     line == "\n"
   end
@@ -17,7 +18,7 @@ class Day1
     file_path = './day1/data.txt'
     calories_for_elves = [0]
     current_index = 0
-    File.foreach(file_path) do |line| 
+    File.foreach(file_path) do |line|
       if new_elf?(line: line)
         current_index += 1
         calories_for_elves[current_index] = 0
@@ -32,6 +33,4 @@ class Day1
     calories_for_elves = count_calories
     calories_for_elves.sort[-n...calories_for_elves.count].sum
   end
-
-
 end
