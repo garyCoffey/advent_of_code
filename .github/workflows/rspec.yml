@@ -1,0 +1,17 @@
+name: Rspec
+
+on: [pull_request]
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler: "Gemfile.lock"
+          bundler-cache: true
+      - name: Run rspec
+        run: |
+          bundle exec rspec
