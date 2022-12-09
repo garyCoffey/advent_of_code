@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Day2 runs code for advent day1
 class Day2
   SCORE_MAP = {
     rock: 1,
@@ -88,7 +89,7 @@ class Day2
   end
 
   def file_path
-    './day2/data/data.txt'
+    './advent/day2/data/data.txt'
   end
 
   def game_result(version:)

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+# Day1 runs code for advent day1
 class Day1
   def result
     [
-      "The most calories being carried by an elf is: #{most_calories_being_carried_n_elves(n: 1)}",
-      "The most calories being carried by the top 3 elves is: #{most_calories_being_carried_n_elves(n: 3)}"
+      "The most calories being carried by an elf is: #{most_calories_being_carried_n_elves(n_elves: 1)}",
+      "The most calories being carried by the top 3 elves is: #{most_calories_being_carried_n_elves(n_elves: 3)}"
     ].join("\n")
   end
 
@@ -29,8 +30,8 @@ class Day1
     calories_for_elves
   end
 
-  def most_calories_being_carried_n_elves(n:)
+  def most_calories_being_carried_n_elves(n_elves:)
     calories_for_elves = count_calories
-    calories_for_elves.sort[-n...calories_for_elves.count].sum
+    calories_for_elves.sort[-n_elves...calories_for_elves.count].sum
   end
 end

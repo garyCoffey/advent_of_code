@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './day1/runner'
-require './day2/runner'
+require './advent/day1/runner'
+require './advent/day2/runner'
 
 def advent_of_code
   puts Day1.new.result

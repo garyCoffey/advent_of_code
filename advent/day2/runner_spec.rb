@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './day2/runner'
+require './advent/day2/runner'
 
 describe 'Day2' do
   context '#result' do
@@ -13,7 +13,7 @@ describe 'Day2' do
 
       context 'strategy should score 15' do
         before do
-          allow_any_instance_of(Day2).to receive(:file_path).and_return('./day2/data/test_data_part1.txt')
+          allow_any_instance_of(Day2).to receive(:file_path).and_return('./advent/day2/data/test_data_part1.txt')
         end
 
         let(:calculation) { result.split.last }
