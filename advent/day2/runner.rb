@@ -1,5 +1,7 @@
-class Day2
+# frozen_string_literal: true
 
+# Day2 runs code for advent day1
+class Day2
   SCORE_MAP = {
     rock: 1,
     paper: 2,
@@ -7,7 +9,7 @@ class Day2
     win: 6,
     draw: 3,
     lose: 0
-  }
+  }.freeze
 
   DECODE_V1 = {
     player1: {
@@ -20,7 +22,7 @@ class Day2
       'Y' => :paper,
       'Z' => :scissors
     }
-  }
+  }.freeze
 
   def result
     "Part1: #{part1_result} \nPart2: #{part2_result}"
@@ -36,69 +38,72 @@ class Day2
     "The score from following the rock/paper/scissors strategy guide would be: #{game_result(version: 2)}"
   end
 
-  def decode(player1:, player2:, version:)
-    if version == 1
-    else
-    end
-  end
+  def decode(player1:, player2:, version:); end
 
   def score_game_v1(player1:, player2:)
     case [player1, player2]
-    when ['A', 'X']
+    when %w[A X]
       return SCORE_MAP[:rock] + SCORE_MAP[:draw]
-    when ['A', 'Y']
+    when %w[A Y]
       return SCORE_MAP[:paper] + SCORE_MAP[:win]
-    when ['A', 'Z']
+    when %w[A Z]
       return SCORE_MAP[:scissors] + SCORE_MAP[:lose]
-    when ['B', 'X']
+    when %w[B X]
       return SCORE_MAP[:rock] + SCORE_MAP[:lose]
-    when ['B', 'Y']
+    when %w[B Y]
       return SCORE_MAP[:paper] + SCORE_MAP[:draw]
-    when ['B', 'Z']
+    when %w[B Z]
       return SCORE_MAP[:scissors] + SCORE_MAP[:win]
-    when ['C', 'X']
+    when %w[C X]
       return SCORE_MAP[:rock] + SCORE_MAP[:win]
-    when ['C', 'Y']
+    when %w[C Y]
       return SCORE_MAP[:paper] + SCORE_MAP[:lose]
-    when ['C', 'Z']
+    when %w[C Z]
       return SCORE_MAP[:scissors] + SCORE_MAP[:draw]
     end
-    raise StandardError.new('UNKNOWN')
+    raise StandardError, 'UNKNOWN'
   end
 
   def score_game_v2(player1:, player2:)
     case [player1, player2]
-    when ['A', 'X']
+    when %w[A X]
       return SCORE_MAP[:scissors] + SCORE_MAP[:lose]
-    when ['A', 'Y']
+    when %w[A Y]
       return SCORE_MAP[:rock] + SCORE_MAP[:draw]
-    when ['A', 'Z']
+    when %w[A Z]
       return SCORE_MAP[:paper] + SCORE_MAP[:win]
-    when ['B', 'X']
+    when %w[B X]
       return SCORE_MAP[:rock] + SCORE_MAP[:lose]
-    when ['B', 'Y']
+    when %w[B Y]
       return SCORE_MAP[:paper] + SCORE_MAP[:draw]
-    when ['B', 'Z']
+    when %w[B Z]
       return SCORE_MAP[:scissors] + SCORE_MAP[:win]
-    when ['C', 'X']
+    when %w[C X]
       return SCORE_MAP[:paper] + SCORE_MAP[:lose]
-    when ['C', 'Y']
+    when %w[C Y]
       return SCORE_MAP[:scissors] + SCORE_MAP[:draw]
-    when ['C', 'Z']
+    when %w[C Z]
       return SCORE_MAP[:rock] + SCORE_MAP[:win]
     end
-    raise StandardError.new('UNKNOWN')
+    raise StandardError, 'UNKNOWN'
   end
 
   def file_path
-    './day2/data/data.txt'
+    './advent/day2/data/data.txt'
   end
 
   def game_result(version:)
     score = 0
     File.foreach(file_path) do |game|
       game = game.split
-      score += version == 1 ? score_game_v1(player1: game[0], player2: game[1]) : score_game_v2(player1: game[0], player2: game[1])
+      score += if version == 1
+                 score_game_v1(player1: game[0],
+                               player2: game[1])
+               else
+                 score_game_v2(
+                   player1: game[0], player2: game[1]
+                 )
+               end
     end
     score
   end
