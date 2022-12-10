@@ -11,12 +11,15 @@ class Day1
 
   private
 
+  def file_path
+    './advent/day1/data/data.txt'
+  end
+
   def new_elf?(line:)
     line == "\n"
   end
 
   def count_calories
-    file_path = './day1/data.txt'
     calories_for_elves = [0]
     current_index = 0
     File.foreach(file_path) do |line|

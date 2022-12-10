@@ -2,10 +2,11 @@
 
 require './advent/day1/runner'
 require './advent/day2/runner'
+require './advent/day3/runner'
 
 def advent_of_code
-  puts Day1.new.result
-  puts Day2.new.result
+  classes = [Day1.new, Day2.new, RuckSack.new]
+  classes.each { |class_obj| puts class_obj.result }
 end
 
 advent_of_code
